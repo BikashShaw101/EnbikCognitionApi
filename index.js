@@ -11,6 +11,7 @@ const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/" });
 const fs = require("fs");
 const DATABASE_URL = process.env.DATABASE_URL;
+const PORT = process.env.PORT || 4000;
 
 
 // <=== access granting ===>
@@ -24,7 +25,7 @@ const secret = "gwbduqjwsnjdnjamkjdsmxsdgth";
 
 // connection of db
 mongoose.connect(
-  "mongodb+srv://enbik:gWBRrXI1IZgDuOLl@cluster0.xctxwz8.mongodb.net/?retryWrites=true&w=majority"
+  "mongodb+srv://enbik:gWBRrXI1IZgDuOLl@cluster0.xctxwz8.mongodb.net/?retryWrites=true&w=majority" || DATABASE_URL
 );
 
 // =============================== Register =============================>
@@ -150,4 +151,4 @@ app.get("/post/:id", async (req, res) => {
   res.json(postDoc);
 });
 
-app.listen(4000);
+app.listen(PORT);
